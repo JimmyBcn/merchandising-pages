@@ -16,7 +16,7 @@ exports.createPages = ({ graphql, actions }) => {
             edges {
               node {
 								id
-								node_locale
+								type
 								slug
               }
             }
@@ -31,11 +31,11 @@ exports.createPages = ({ graphql, actions }) => {
         const pages = result.data.allContentfulMerchandisingPage.edges
 
         pages.forEach((page, index) => {
-					const locale = page.node.node_locale;
+					const type = page.node.type ? page.node.type.toLowerCase() + "/" : "";
 					const slug = page.node.slug;
 
           createPage({
-            path: locale + "/" + slug, 
+            path: type + slug, 
             component: path.resolve("./src/templates/merchandising-page.js"),
             context: {
               id: page.node.id
