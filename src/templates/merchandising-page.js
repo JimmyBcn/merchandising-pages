@@ -3,17 +3,17 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types"
-import triggerAnalytics from "../analytics"
+// import triggerAnalytics from "../analytics"
 
 function RichTextEmbeddedImage(props) {
 	var url = "http:" + props.sourceUrl;
-  return <img src={url}/>
+  return <img src={url} alt="My image"/>
 }
 
 export default class MerchandisingPageTemplate extends React.Component {
-  componentDidMount() {
-    triggerAnalytics("MerchandisingPage")
-  }
+  // componentDidMount() {
+  //   triggerAnalytics("MerchandisingPage")
+  // }
   
   // TODO: We need a better approach to parse embeeded content, this is taken from https://github.com/contentful/rich-text/tree/master/packages/rich-text-react-renderer
   render() {
